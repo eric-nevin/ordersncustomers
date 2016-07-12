@@ -1,0 +1,22 @@
+<div ng-controller='orderController'>
+	<form>
+		Customers<select ng-options='customer as customer.name for customer in customers track by customer._id' ng-model='customerSelected'></select>
+		Products<select ng-options='product as product.name for product in products track by product._id' ng-model='selected'></select>
+		Quantity<select ng-repeat='quantity in quantitys'><option ng-repeat='value in quantity'>{{ value }}</select>
+		<!-- Order<select><option ng-repeat=''>{{ i }}</option> -->
+		<input type='submit' ng-click='addorder(customerSelected, selected, quantity)'>
+	</form>
+	<table>
+		<thead>
+			<th>Customer </th>
+			<th>Product </th>
+			<th>Order Quantity </th>
+		</thead>
+		<tr ng-repeat='order in orders'>
+			<td>{{ order.customer_id.name }} </td>
+			<td>{{ order.product_id.name }} </td>
+			<td>{{ order.quantity }} </td>
+
+		</tr>
+	</table>
+</div>
